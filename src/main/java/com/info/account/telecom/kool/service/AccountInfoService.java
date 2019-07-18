@@ -20,15 +20,17 @@ public class AccountInfoService {
 	AccountInformationServiceProxy feignProxy;
 
 	public List<AccountInfo> getAccountsByCustId(String custId) {
-		if (null != repo.findByCustId(custId) || repo.findByCustId(custId).size() > 0)
-			return repo.findByCustId(custId);
+		
+		List<AccountInfo> accountInfo = repo.findByCustId(custId);
+		if (null != accountInfo && accountInfo.size() > 0)
+			return accountInfo;
 		else
 			return null;
 	}
 	
 	public List<BillInfo> getBillByAccount(String accountId) {
 		List<BillInfo> billInfo = feignProxy.getBillByAccount(accountId);
-		if (null != billInfo || billInfo.size() > 0)
+		if (null != billInfo && billInfo.size() > 0)
 			return billInfo;
 		else
 			return null;

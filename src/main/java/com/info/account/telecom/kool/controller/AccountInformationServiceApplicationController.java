@@ -53,7 +53,7 @@ public class AccountInformationServiceApplicationController {
        {
     	   response.setAccountInfo(accountInfo);
     	   billInfo = service.getBillByAccount(accountInfo.get(0).getAccountId());
-    	   if (null != billInfo || billInfo.size() != 0)
+    	   if (null != billInfo && billInfo.size() != 0)
         	   response.setBillInfo(billInfo);
        }
        
